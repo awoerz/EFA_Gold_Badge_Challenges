@@ -8,10 +8,10 @@ namespace _01_Komodo_Cafe_Class_Library
 {
     public enum ingredients
     {
-        Chicken,
-        Beef,
-        Pork,
-        Bread,
+        Hamburger,
+        Hotdog,
+        ChickenPatty,
+        Bun,
         Cheese,
         Lettuce,
         Tomotato,
@@ -19,7 +19,10 @@ namespace _01_Komodo_Cafe_Class_Library
         Onions,
         Ketchup,
         Mustard,
-        Mayonnaise
+        Mayonnaise,
+        SecretSauce,
+        Fries,
+        Drink
     }
 
     public class MenuItem
