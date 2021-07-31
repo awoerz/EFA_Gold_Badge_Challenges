@@ -33,15 +33,6 @@ namespace _01_Komodo_Cafe_Class_Library
         public List<ingredients> Ingredients { get; set; }
         public decimal Price { get; set; }
 
-        private int myVar;
-
-        public int MyProperty
-        {
-            get { return myVar; }
-            set { myVar = value; }
-        }
-
-
         public MenuItem()
         {
             Ingredients = new List<ingredients>();
@@ -54,6 +45,23 @@ namespace _01_Komodo_Cafe_Class_Library
             Description = mealDescription;
             Ingredients = ingredients;
             Price = price;
+        }
+
+        public string GetIngredientsAsString()
+        {
+            string outputString = "";
+            foreach (ingredients ing in Ingredients)
+            {
+                if (ing == Ingredients.Last())
+                {
+                    outputString += $"{ing}";
+                }
+                else
+                {
+                    outputString += $"{ing}, ";
+                }
+            }
+            return outputString;
         }
     }
 }
