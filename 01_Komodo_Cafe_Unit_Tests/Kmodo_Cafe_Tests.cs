@@ -1,13 +1,14 @@
-﻿using _01_Komodo_Cafe_Class_Library;
+﻿using _01_Kmodo_Cafe;
+using _01_Komodo_Cafe_Class_Library;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 
 namespace _01_Komodo_Cafe_Unit_Tests
 {
     [TestClass]
-    public class Kmodo_Cafe_Tests
+    public class Kmodo_Cafe_Menu_Item_Repo_Tests
     {
         private MenuItem _menuItem;
         private MenuItemRepository _menuItemRepository;
@@ -16,9 +17,9 @@ namespace _01_Komodo_Cafe_Unit_Tests
         public void Arrange()
         {
             List<ingredients> burgerIngredients = new List<ingredients>();
-            burgerIngredients.Add(ingredients.Beef);
+            burgerIngredients.Add(ingredients.Hamburger);
             burgerIngredients.Add(ingredients.Cheese);
-            burgerIngredients.Add(ingredients.Bread);
+            burgerIngredients.Add(ingredients.Bun);
             _menuItem = new MenuItem(1, "Cheeseburger", "The all american beef patty with cheese. Add toppings of your choice!", burgerIngredients, 4.99m);
 
             _menuItemRepository = new MenuItemRepository();
@@ -62,6 +63,66 @@ namespace _01_Komodo_Cafe_Unit_Tests
             MenuItemRepository newMenuItemRepo = new MenuItemRepository(newListOfMenuItems);
 
             CollectionAssert.AreEqual(newListOfMenuItems, newMenuItemRepo.GetMenu());
+        }
+    }
+
+    [TestClass]
+    public class Komodo_Cafe_Menu_Item_Tests
+    {
+        private MenuItem _menuItem;
+
+        [TestInitialize]
+        public void Arrange()
+        {
+            List<ingredients> burgerIngredients = new List<ingredients>();
+            burgerIngredients.Add(ingredients.Hamburger);
+            burgerIngredients.Add(ingredients.Cheese);
+            burgerIngredients.Add(ingredients.Bun);
+            _menuItem = new MenuItem(1, "Cheeseburger", "The all american beef patty with cheese. Add toppings of your choice!", burgerIngredients, 4.99m);
+        }
+
+        [TestMethod]
+        public void GetIngredientsAsStringFormatedCorrectly()
+        {
+            string burgerIngredientsString = "Hamburger, Cheese, Bun";
+
+            Assert.AreEqual(burgerIngredientsString, _menuItem.GetIngredientsAsString());
+        }
+    }
+
+    [TestClass]
+    public class Komod_Cafe_UI_Tests
+    {
+        UI testUi = new UI();
+
+        [TestMethod]
+        public void ConfirmIntResponseAsInt()
+        {
+            UI testUi = new UI();
+            StringReader input = new StringReader("1");
+            Console.SetIn(input);
+
+            int actual = testUi.GetUserResponseAsInt();
+
+            Assert.AreEqual(1, actual);
+        }
+        [TestMethod]
+        public void ConfirmAskAgainWhenInputIsBad()
+        {
+            //Arrange
+            StringReader input = new StringReader("invalid \n 1");
+            StringWriter output = new StringWriter();
+
+            Console.SetIn(input);
+            Console.SetOut(output);
+
+            //Act
+            testUi.GetUserResponseAsInt();
+
+            //Assert
+            Assert.IsTrue(output.ToString().Contains("Your response was not a valid, please input a valid integer for your selection."));
+
+
         }
     }
 }

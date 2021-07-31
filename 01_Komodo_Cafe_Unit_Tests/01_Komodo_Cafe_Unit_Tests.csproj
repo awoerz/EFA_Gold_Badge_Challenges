@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\01_Kmodo_Cafe_Console\01_Kmodo_Cafe_Console.csproj">
+      <Project>{ad59d5ce-d854-4b34-b00c-b8f6195e692b}</Project>
+      <Name>01_Kmodo_Cafe_Console</Name>
+    </ProjectReference>
     <ProjectReference Include="..\01_Komodo_Cafe_Class_Library\01_Komodo_Cafe_Class_Library.csproj">
       <Project>{38be3105-ab0e-44b3-bf39-5900c1dddefc}</Project>
       <Name>01_Komodo_Cafe_Class_Library</Name>

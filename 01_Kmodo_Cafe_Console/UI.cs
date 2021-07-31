@@ -70,6 +70,7 @@ namespace _01_Kmodo_Cafe
         {
             int responseToReturn = 0;
             bool validResponse = false;
+            Console.WriteLine("");
             while (!validResponse)
             {
                 validResponse = int.TryParse(Console.ReadLine(), out responseToReturn);
