@@ -98,31 +98,60 @@ namespace _01_Komodo_Cafe_Unit_Tests
         [TestMethod]
         public void ConfirmIntResponseAsInt()
         {
-            UI testUi = new UI();
             StringReader input = new StringReader("1");
             Console.SetIn(input);
-
             int actual = testUi.GetUserResponseAsInt();
-
             Assert.AreEqual(1, actual);
         }
         [TestMethod]
-        public void ConfirmAskAgainWhenInputIsBad()
+        public void ConfirmAskAgainWhenIntInputIsBad()
         {
             //Arrange
             StringReader input = new StringReader("invalid \n 1");
             StringWriter output = new StringWriter();
-
             Console.SetIn(input);
             Console.SetOut(output);
-
             //Act
             testUi.GetUserResponseAsInt();
-
             //Assert
-            Assert.IsTrue(output.ToString().Contains("Your response was not a valid, please input a valid integer for your selection."));
-
-
+            Assert.IsTrue(output.ToString().Contains("Your response was not valid, please input a valid integer for your selection."));
+        }
+        [TestMethod]
+        public void ConfirmDecimalResponseAsDecimal()
+        {
+            //Arange
+            StringReader input = new StringReader("1.1");
+            Console.SetIn(input);
+            //Act
+            decimal actual = testUi.GetUserResponseAsDecimal();
+            //Assert
+            Assert.AreEqual(1.1m, actual);
+        }
+        [TestMethod]
+        public void ConfirmAskAgainWhenDecimalInputIsBad()
+        {
+            //Arrange
+            StringReader input = new StringReader("invalid \n 1.1");
+            StringWriter output = new StringWriter();
+            Console.SetIn(input);
+            Console.SetOut(output);
+            //Act
+            testUi.GetUserResponseAsDecimal();
+            //Assert
+            Assert.IsTrue(output.ToString().Contains("Your response was not valid, please input a valid integer for your selection."));
+        }
+        [TestMethod]
+        public void CoinfirmOutputChoiceReturnsCorrectly()
+        {
+            //Arrange
+            StringReader input = new StringReader("1 \n N \n D \n 1 \n n \n key \n 1.1 \n 1");
+            Console.SetIn(input);
+            //Act & Assert
+            Assert.IsTrue(testUi.OutputChoiceAndContinue(1));
+            Assert.IsTrue(testUi.OutputChoiceAndContinue(2));
+            Assert.IsTrue(testUi.OutputChoiceAndContinue(3));
+            Assert.IsTrue(testUi.OutputChoiceAndContinue(5));
+            Assert.IsFalse(testUi.OutputChoiceAndContinue(4));
         }
     }
 }

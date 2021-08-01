@@ -80,7 +80,7 @@ namespace _01_Kmodo_Cafe
                 }
                 else
                 {
-                    Console.WriteLine("Your response was not a valid, please input a valid integer for your selection.");
+                    Console.WriteLine("Your response was not valid, please input a valid integer for your selection.");
                 }
             }
             return responseToReturn;
@@ -99,7 +99,7 @@ namespace _01_Kmodo_Cafe
                 }
                 else
                 {
-                    Console.WriteLine("Your response was not a valid, please input a valid integer for your selection.");
+                    Console.WriteLine("Your response was not valid, please input a valid integer for your selection.");
                 }
             }
             return responseToReturn;
@@ -107,7 +107,8 @@ namespace _01_Kmodo_Cafe
 
         public bool OutputChoiceAndContinue(int userChoice)
         {
-            Console.Clear();
+            //Fixes issue in unit testing; Console.Clear is a trouble maker
+            if (!Console.IsOutputRedirected) Console.Clear();
             switch (userChoice)
             {
                 case 1:
@@ -171,7 +172,7 @@ namespace _01_Kmodo_Cafe
             bool userAddsIngredients = true;
             while(userAddsIngredients)
             {
-                Console.Clear();
+                if (!Console.IsOutputRedirected) Console.Clear();
                 int numberOfIngredients = Enum.GetValues(typeof(ingredients)).Length;
                 Console.WriteLine("Here are your current available options for ingredients, please select one at a time.");
                 for (int i = 0; i < numberOfIngredients; i++)
