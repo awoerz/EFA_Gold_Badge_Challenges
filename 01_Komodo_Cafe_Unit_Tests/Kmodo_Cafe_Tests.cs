@@ -96,6 +96,18 @@ namespace _01_Komodo_Cafe_Unit_Tests
         UI testUi = new UI();
 
         [TestMethod]
+        public void ConfirmMenuDisplayed()
+        {
+            //Arrange
+            StringWriter output = new StringWriter();
+            Console.SetOut(output);
+            //Act
+            testUi.DisplayMenu();
+            //Assert
+            Assert.IsTrue(output.ToString().Contains("Main Menu:"));
+        }
+
+        [TestMethod]
         public void ConfirmIntResponseAsInt()
         {
             StringReader input = new StringReader("1");
@@ -152,6 +164,59 @@ namespace _01_Komodo_Cafe_Unit_Tests
             Assert.IsTrue(testUi.OutputChoiceAndContinue(3));
             Assert.IsTrue(testUi.OutputChoiceAndContinue(5));
             Assert.IsFalse(testUi.OutputChoiceAndContinue(4));
+        }
+        [TestMethod]
+        public void ConfirmDisplayFoodMenuDisplays()
+        {
+            //Arrange
+            StringReader input = new StringReader("1 \n N \nD\n 1 \n n \n key \n 1.1 \n 1");
+            Console.SetIn(input);
+            StringWriter output = new StringWriter();
+            Console.SetOut(output);
+            testUi.AddToMenu();
+            //Act
+            testUi.DisplayFoodMenu();
+            //Assert
+            Assert.IsTrue(output.ToString().Contains("1:  N  -- 1.1"));
+        }
+        [TestMethod]
+        public void ConfirmAddToMenuAddsMenuItem()
+        {
+            //Arrange
+            MenuItemRepository TestRepo = new MenuItemRepository();
+            TestRepo.AddMenuItem(new MenuItem());
+            StringReader input = new StringReader("1 \n N \n D \n 1 \n n \n key \n 1.1 \n n");
+            Console.SetIn(input);
+            //Act
+            testUi.AddToMenu();
+            //Assert
+            Assert.AreEqual(TestRepo.GetMenu().Count, testUi.GetMenuItemRepo().Count);
+        }
+        [TestMethod]
+        public void ConfirmRemoveItemFromMenu()
+        {
+            //Arrange
+            StringReader input = new StringReader("1 \n N \nD\n 1 \n n \n key \n 1.1 \n 1 \n key");
+            Console.SetIn(input);
+            StringWriter output = new StringWriter();
+            Console.SetOut(output);
+            testUi.AddToMenu();
+            //Act
+            Assert.IsTrue(testUi.GetMenuItemRepo().Count == 1);
+            testUi.RemoveItemFromMenu();
+            //Assert
+            Assert.IsTrue(testUi.GetMenuItemRepo().Count == 0);
+        }
+        [TestMethod]
+        public void ConfirmIngredientListReturnsCorrectly()
+        {
+            //Arrange
+            StringReader input = new StringReader("1 \n y \n 2 \n n");
+            Console.SetIn(input);
+            //Act
+            List<ingredients> ingredientList = testUi.GetIngredientListFromUser();
+            //Assert
+            Assert.IsTrue(ingredientList.Contains(ingredients.Hamburger));
         }
     }
 }

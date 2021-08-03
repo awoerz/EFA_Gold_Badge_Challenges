@@ -9,7 +9,7 @@ namespace _01_Kmodo_Cafe
 {
     public class UI
     {
-        MenuItemRepository menuItemRepository = new MenuItemRepository();
+        private MenuItemRepository _menuItemRepository = new MenuItemRepository();
 
         public void Run()
         {
@@ -24,7 +24,6 @@ namespace _01_Kmodo_Cafe
                 PressAnyKeyToContinue();
             }
         }
-
         public void SeedContent()
         {
             List<ingredients> comboOneIngredients = new List<ingredients> { ingredients.Hamburger, ingredients.Bun, ingredients.Cheese, ingredients.Ketchup, ingredients.Mustard, ingredients.Onions, ingredients.Pickles, ingredients.Fries, ingredients.Drink };
@@ -42,30 +41,27 @@ namespace _01_Kmodo_Cafe
             List<ingredients> comboFiveIngredients = new List<ingredients> { ingredients.ChickenPatty, ingredients.Bun, ingredients.Pickles, ingredients.Lettuce, ingredients.Tomotato, ingredients.SecretSauce, ingredients.Fries, ingredients.Drink };
             MenuItem comboFive = new MenuItem(5, "Combo Number Five", "The best fried chicken breast anywhere on the planet but improved by the only thing that can make it better, our secret sauce! And also, it comes with fries and a drink.", comboFiveIngredients, 7.49m);
 
-            menuItemRepository.AddMenuItem(comboOne);
-            menuItemRepository.AddMenuItem(comboTwo);
-            menuItemRepository.AddMenuItem(comboThree);
-            menuItemRepository.AddMenuItem(comboFour);
-            menuItemRepository.AddMenuItem(comboFive);
+            _menuItemRepository.AddMenuItem(comboOne);
+            _menuItemRepository.AddMenuItem(comboTwo);
+            _menuItemRepository.AddMenuItem(comboThree);
+            _menuItemRepository.AddMenuItem(comboFour);
+            _menuItemRepository.AddMenuItem(comboFive);
 
         }
-    
         public void PressAnyKeyToContinue()
         {
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
-
         public void DisplayMenu()
         {
-            Console.Clear();
+            if (!Console.IsOutputRedirected) Console.Clear();
             Console.WriteLine("Main Menu: \n" +
                 "1. View current food menu menu \n" +
                 "2. Add item to menu \n" +
                 "3. Remove item from menu \n" +
                 "4. Exit application");
         }
-
         public int GetUserResponseAsInt()
         {
             int responseToReturn = 0;
@@ -85,7 +81,6 @@ namespace _01_Kmodo_Cafe
             }
             return responseToReturn;
         }
-
         public decimal GetUserResponseAsDecimal()
         {
             decimal responseToReturn = 0;
@@ -104,7 +99,6 @@ namespace _01_Kmodo_Cafe
             }
             return responseToReturn;
         }
-
         public bool OutputChoiceAndContinue(int userChoice)
         {
             //Fixes issue in unit testing; Console.Clear is a trouble maker
@@ -128,18 +122,16 @@ namespace _01_Kmodo_Cafe
                     return true;
             }
         }
-
         public void DisplayFoodMenu()
         {
             Console.WriteLine("CURRENT MENU");
-            foreach (var meal in menuItemRepository.GetMenu())
+            foreach (var meal in _menuItemRepository.GetMenu())
             {
                 Console.WriteLine($"{meal.Number}: {meal.Name} -- {meal.Price}\n" +
                     $"  {meal.Description}\n" +
                     $"  Ingredients: {meal.GetIngredientsAsString()}\n");
             }
         }
-
         public void AddToMenu()
         {
             MenuItem newMenuItem = new MenuItem();
@@ -153,19 +145,17 @@ namespace _01_Kmodo_Cafe
             newMenuItem.Ingredients = GetIngredientListFromUser();
             Console.WriteLine("Please provide the cost of the item in dollars and cents.");
             newMenuItem.Price = GetUserResponseAsDecimal();
-            menuItemRepository.AddMenuItem(newMenuItem);
+            _menuItemRepository.AddMenuItem(newMenuItem);
             Console.WriteLine("Your menu item has been added.");
         }
-
         public void RemoveItemFromMenu()
         {
             DisplayFoodMenu();
             Console.WriteLine("Please select the item that you would like to remove by its number.");
             int userResponse = GetUserResponseAsInt();
-            menuItemRepository.RemoveMenuItem(userResponse);
+            _menuItemRepository.RemoveMenuItem(userResponse);
             Console.WriteLine("Your menu item has been removed.");
         }
-
         public List<ingredients> GetIngredientListFromUser()
         {
             List<ingredients> ingredientListToReturn = new List<ingredients>();
@@ -194,6 +184,10 @@ namespace _01_Kmodo_Cafe
             }
 
             return ingredientListToReturn;
+        }
+        public List<MenuItem> GetMenuItemRepo()
+        {
+            return _menuItemRepository.GetMenu();
         }
     }
 }
