@@ -106,7 +106,6 @@ namespace _01_Komodo_Cafe_Unit_Tests
             //Assert
             Assert.IsTrue(output.ToString().Contains("Main Menu:"));
         }
-
         [TestMethod]
         public void ConfirmIntResponseAsInt()
         {

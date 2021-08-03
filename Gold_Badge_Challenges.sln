@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Komodo_Cafe_Class_Librar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Komodo_Cafe_Unit_Tests", "01_Komodo_Cafe_Unit_Tests\01_Komodo_Cafe_Unit_Tests.csproj", "{0AD5F7A2-F488-46E9-8A4A-F25ECF601213}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Kmodo_Cafe_Console", "01_Kmodo_Cafe_Console\01_Kmodo_Cafe_Console.csproj", "{AD59D5CE-D854-4B34-B00C-B8F6195E692B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_Komodo_Cafe_Console", "01_Kmodo_Cafe_Console\01_Komodo_Cafe_Console.csproj", "{AD59D5CE-D854-4B34-B00C-B8F6195E692B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Komodo_Claims_Console", "02_Komodo_Claims_Console\02_Komodo_Claims_Console.csproj", "{16C39360-4C62-4695-9E28-959BE818FB8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Komodo_Claims_Class_Library", "02_Komodo_Claims_ClassLibrary\02_Komodo_Claims_Class_Library.csproj", "{CC15C60F-E9F4-4FF7-8113-F4DFF2B16682}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Komodo_Claims_Unit_Tests", "02_Komodo_Claims_Tests\02_Komodo_Claims_Unit_Tests.csproj", "{F4A2D595-023D-42E3-9413-47528810855C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{AD59D5CE-D854-4B34-B00C-B8F6195E692B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD59D5CE-D854-4B34-B00C-B8F6195E692B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD59D5CE-D854-4B34-B00C-B8F6195E692B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C39360-4C62-4695-9E28-959BE818FB8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C39360-4C62-4695-9E28-959BE818FB8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C39360-4C62-4695-9E28-959BE818FB8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C39360-4C62-4695-9E28-959BE818FB8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC15C60F-E9F4-4FF7-8113-F4DFF2B16682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC15C60F-E9F4-4FF7-8113-F4DFF2B16682}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC15C60F-E9F4-4FF7-8113-F4DFF2B16682}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC15C60F-E9F4-4FF7-8113-F4DFF2B16682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4A2D595-023D-42E3-9413-47528810855C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A2D595-023D-42E3-9413-47528810855C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A2D595-023D-42E3-9413-47528810855C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A2D595-023D-42E3-9413-47528810855C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
