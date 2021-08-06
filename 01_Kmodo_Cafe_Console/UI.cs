@@ -10,7 +10,6 @@ namespace _01_Kmodo_Cafe
     public class UI
     {
         private MenuItemRepository _menuItemRepository = new MenuItemRepository();
-
         public void Run()
         {
             SeedContent();

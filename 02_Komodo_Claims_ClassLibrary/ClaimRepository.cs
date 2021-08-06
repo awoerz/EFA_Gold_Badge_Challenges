@@ -18,5 +18,11 @@ namespace _02_Komodo_Claims_ClassLibrary
         {
             Repository = claimList;
         }
+
+        public bool AddClaimToRepo(Claim newClaim)
+        {
+            Repository.Add(newClaim);
+            return true;
+        }
     }
 }

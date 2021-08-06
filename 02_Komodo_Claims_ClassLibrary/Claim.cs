@@ -31,7 +31,7 @@ namespace _02_Komodo_Claims_ClassLibrary
         public Claim(int claimID, ClaimTypes claimType, string description, decimal claimAmount, DateTime dateOfIncident, DateTime dateOfClaim, bool isValid)
         {
             ClaimID = claimID;
-            claimType = ClaimType;
+            ClaimType = claimType;
             Description = description;
             ClaimAmount = claimAmount;
             DateOfIncident = dateOfIncident;
