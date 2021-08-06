@@ -17,6 +17,18 @@ namespace _03_Komodo_Insurance_Badges_Class_Library
             _BadgeDictionary = new Dictionary<int, List<string>>();
         }
 
+        public Badge GetBadgeByID(int id)
+        {
+            foreach(Badge badge in _Badges)
+            {
+                if(badge.BadgeID == id)
+                {
+                    return badge;
+                }
+            }
+            return null;
+        }
+
         public void AddBadge(Badge badge)
         {
             _Badges.Add(badge);
